@@ -1,18 +1,11 @@
-# Largest prime factor
-"""
-Program to find the largest prime factor of the number 600851475143
-"""
-
-def largestPrimeNumber(num):
-    count = 0
-    multiValue = 0
-    for i in range(1,1000):
-        if num % i == 0:
-            print(i)
-        count = count + i
-        multiValue = count * count
-        if multiValue == num:
-            break
-        else:
-            continue
-largestPrimeNumber(13195)
+def largest_prime_factor(num):
+    largestPrimeFactor = 1
+    for i in range(2,int(num**0.5)+1):
+        while num%i == 0:
+            largestPrimeFactor = i
+            num //= i
+    if num > largestPrimeFactor:
+        largestPrimeFactor = num
+    return largestPrimeFactor
+result = largest_prime_factor(600851475143)
+print(result)
